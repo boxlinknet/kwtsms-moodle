@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/kwtsms/db" VERSION="20260326" COMMENT="XMLDB file for local_kwtsms"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+  <TABLES>
+
+    <TABLE NAME="local_kwtsms_log" COMMENT="SMS send log with full API response">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" COMMENT="Moodle user ID, 0 for admin-initiated"/>
+        <FIELD NAME="recipient_phone" TYPE="char" LENGTH="30" NOTNULL="true" DEFAULT=""/>
+        <FIELD NAME="message" TYPE="text" NOTNULL="true"/>
+        <FIELD NAME="template_id" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="event_type" TYPE="char" LENGTH="100" NOTNULL="true" DEFAULT=""/>
+        <FIELD NAME="sender_id" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT=""/>
+        <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="pending" COMMENT="sent, failed, skipped, queued"/>
+        <FIELD NAME="skip_reason" TYPE="char" LENGTH="50" NOTNULL="false" COMMENT="Reason if skipped, null otherwise"/>
+        <FIELD NAME="api_response" TYPE="text" NOTNULL="false" COMMENT="Full JSON API response, credentials stripped"/>
+        <FIELD NAME="error_code" TYPE="char" LENGTH="20" NOTNULL="false" COMMENT="kwtsms error code e.g. ERR003"/>
+        <FIELD NAME="credits_used" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="test_mode" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="idx_status_time" UNIQUE="false" FIELDS="status, timecreated"/>
+        <INDEX NAME="idx_userid" UNIQUE="false" FIELDS="userid"/>
+        <INDEX NAME="idx_event_type" UNIQUE="false" FIELDS="event_type"/>
+      </INDEXES>
+    </TABLE>
+
+    <TABLE NAME="local_kwtsms_templates" COMMENT="SMS templates seeded on install, always active">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="event_type" TYPE="char" LENGTH="100" NOTNULL="true"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="100" NOTNULL="true" DEFAULT=""/>
+        <FIELD NAME="message_en" TYPE="text" NOTNULL="true"/>
+        <FIELD NAME="message_ar" TYPE="text" NOTNULL="true"/>
+        <FIELD NAME="default_en" TYPE="text" NOTNULL="true"/>
+        <FIELD NAME="default_ar" TYPE="text" NOTNULL="true"/>
+        <FIELD NAME="recipient_type" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="student" COMMENT="student, admin, both"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="idx_event_type" UNIQUE="true" FIELDS="event_type"/>
+      </INDEXES>
+    </TABLE>
+
+    <TABLE NAME="local_kwtsms_cache" COMMENT="Cached gateway data: balance, senderids, coverage">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="cache_key" TYPE="char" LENGTH="50" NOTNULL="true"/>
+        <FIELD NAME="cache_value" TYPE="text" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="idx_cache_key" UNIQUE="true" FIELDS="cache_key"/>
+      </INDEXES>
+    </TABLE>
+
+  </TABLES>
+</XMLDB>
