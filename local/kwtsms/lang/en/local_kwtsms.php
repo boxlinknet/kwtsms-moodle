@@ -58,6 +58,10 @@ $string['sent_week'] = 'Sent This Week';
 $string['sent_month'] = 'Sent This Month';
 $string['failed_count'] = 'Failed';
 $string['recent_activity'] = 'Recent Activity';
+$string['send_statistics'] = 'Send Statistics';
+$string['never_synced'] = 'Never';
+$string['not_configured'] = 'Not configured';
+$string['no_recent_activity'] = 'No recent SMS activity.';
 
 // Settings.
 $string['settings_general'] = 'General Settings';

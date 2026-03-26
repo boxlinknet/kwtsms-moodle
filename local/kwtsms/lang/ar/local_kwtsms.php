@@ -58,6 +58,10 @@ $string['sent_week'] = 'أُرسلت هذا الأسبوع';
 $string['sent_month'] = 'أُرسلت هذا الشهر';
 $string['failed_count'] = 'فشلت';
 $string['recent_activity'] = 'النشاط الأخير';
+$string['send_statistics'] = 'إحصائيات الإرسال';
+$string['never_synced'] = 'أبداً';
+$string['not_configured'] = 'غير مهيأ';
+$string['no_recent_activity'] = 'لا يوجد نشاط رسائل قصيرة حديث.';
 
 // Settings.
 $string['settings_general'] = 'الإعدادات العامة';
