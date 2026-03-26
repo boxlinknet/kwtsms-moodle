@@ -31,14 +31,5 @@ defined('MOODLE_INTERNAL') || die();
  * @return bool
  */
 function xmldb_local_kwtsms_upgrade($oldversion) {
-    // Future upgrade steps go here.
-    // Always increment $plugin->version in version.php when adding steps.
-    //
-    // Example:
-    // if ($oldversion < 2026040100) {
-    //     // Add new template, alter schema, etc.
-    //     upgrade_plugin_savepoint(true, 2026040100, 'local', 'kwtsms');
-    // }
-
     return true;
 }

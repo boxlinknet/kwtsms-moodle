@@ -27,8 +27,6 @@
 
 namespace local_kwtsms;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Tests for the api_client wrapper class.
  *

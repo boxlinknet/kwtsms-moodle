@@ -26,8 +26,6 @@
 
 namespace local_kwtsms;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Observer class that handles Moodle events and dispatches SMS notifications.
  */
@@ -37,6 +35,7 @@ class observer {
      * Handle user enrolment created event.
      *
      * @param \core\event\user_enrolment_created $event
+     * @return void
      */
     public static function user_enrolment_created(\core\event\user_enrolment_created $event): void {
         global $DB;
@@ -63,6 +62,7 @@ class observer {
      * Handle user enrolment deleted event.
      *
      * @param \core\event\user_enrolment_deleted $event
+     * @return void
      */
     public static function user_enrolment_deleted(\core\event\user_enrolment_deleted $event): void {
         global $DB;
@@ -89,6 +89,7 @@ class observer {
      * Handle user graded event.
      *
      * @param \core\event\user_graded $event
+     * @return void
      */
     public static function user_graded(\core\event\user_graded $event): void {
         global $DB;
@@ -128,6 +129,7 @@ class observer {
      * Handle course completed event.
      *
      * @param \core\event\course_completed $event
+     * @return void
      */
     public static function course_completed(\core\event\course_completed $event): void {
         global $DB;
@@ -154,6 +156,7 @@ class observer {
      * Handle quiz attempt submitted event.
      *
      * @param \mod_quiz\event\attempt_submitted $event
+     * @return void
      */
     public static function attempt_submitted(\mod_quiz\event\attempt_submitted $event): void {
         global $DB;
@@ -180,6 +183,7 @@ class observer {
      * Handle assignment file upload event.
      *
      * @param \assignsubmission_file\event\assessable_uploaded $event
+     * @return void
      */
     public static function assessable_uploaded(\assignsubmission_file\event\assessable_uploaded $event): void {
         global $DB;
@@ -206,6 +210,7 @@ class observer {
      * Handle user created event.
      *
      * @param \core\event\user_created $event
+     * @return void
      */
     public static function user_created(\core\event\user_created $event): void {
         global $DB;

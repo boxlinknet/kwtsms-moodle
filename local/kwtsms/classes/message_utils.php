@@ -24,8 +24,6 @@
 
 namespace local_kwtsms;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Utility class for cleaning SMS message text and calculating page counts.
  *

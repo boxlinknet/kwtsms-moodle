@@ -27,8 +27,6 @@
 
 namespace local_kwtsms;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Manages SMS templates, placeholder substitution, and bilingual message rendering.
  */

@@ -28,8 +28,6 @@
 
 namespace local_kwtsms\task;
 
-defined('MOODLE_INTERNAL') || die();
-
 use local_kwtsms\api_client;
 use local_kwtsms\manager;
 

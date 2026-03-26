@@ -28,8 +28,6 @@
 
 namespace local_kwtsms;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Central SMS send orchestrator.
  *

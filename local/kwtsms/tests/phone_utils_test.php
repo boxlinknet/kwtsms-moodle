@@ -24,8 +24,6 @@
 
 namespace local_kwtsms;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Tests for the phone_utils utility class.
  *

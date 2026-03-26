@@ -27,8 +27,6 @@
 
 namespace local_kwtsms;
 
-defined('MOODLE_INTERNAL') || die();
-
 require_once(__DIR__ . '/../lib/kwtsms/KwtSMS.php');
 require_once(__DIR__ . '/../lib/kwtsms/PhoneUtils.php');
 require_once(__DIR__ . '/../lib/kwtsms/MessageUtils.php');
@@ -125,7 +123,7 @@ class api_client {
         // Create a temporary client to verify credentials via the balance endpoint.
         $tempclient = new \KwtSMS\KwtSMS($username, $password, 'KWT-SMS', false, '');
 
-        // verify() calls the balance endpoint internally to validate credentials.
+        // The verify() method calls the balance endpoint to validate credentials.
         [$ok, $balance, $error] = $tempclient->verify();
         if (!$ok) {
             return [

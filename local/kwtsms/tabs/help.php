@@ -68,7 +68,9 @@ use local_kwtsms\template_manager;
             </li>
         </ol>
         <div class="alert alert-info">
-            It is recommended to enable <strong>Test Mode</strong> in Settings during initial setup. Test mode sends messages to the API with a test flag so they are not delivered to handsets and credits can be recovered from the kwtSMS queue.
+            It is recommended to enable <strong>Test Mode</strong> in Settings during initial setup.
+            Test mode sends messages to the API with a test flag so they are not delivered
+            to handsets and credits can be recovered from the kwtSMS queue.
         </div>
     </div>
 </div>
@@ -116,7 +118,9 @@ use local_kwtsms\template_manager;
         <h4 class="mb-0"><?php echo get_string('help_placeholders', 'local_kwtsms'); ?></h4>
     </div>
     <div class="card-body">
-        <p>Each event type supports a set of placeholders that are replaced with actual values when the SMS is sent. Wrap placeholder names in curly braces in your templates, e.g. <code>{firstname}</code>.</p>
+        <p>Each event type supports a set of placeholders that are replaced with actual values
+        when the SMS is sent. Wrap placeholder names in curly braces in your templates,
+        e.g. <code>{firstname}</code>.</p>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -163,8 +167,12 @@ use local_kwtsms\template_manager;
         <p><?php echo get_string('help_phone_format_text', 'local_kwtsms'); ?></p>
         <ul>
             <li><strong>International format:</strong> Use the full number including country code, e.g. <code>96598765432</code> for a Kuwait mobile number.</li>
-            <li><strong>Local number conversion:</strong> If a user's phone number starts with <code>0</code>, the plugin will automatically strip the leading zero and prepend the default country code configured in the Gateway tab.</li>
-            <li><strong>Arabic digit conversion:</strong> Arabic-Indic digits (<code>٠١٢٣٤٥٦٧٨٩</code>) are automatically converted to Western digits (<code>0123456789</code>) before processing.</li>
+            <li><strong>Local number conversion:</strong> If a user's phone number starts with
+            <code>0</code>, the plugin will automatically strip the leading zero and prepend the
+            default country code configured in the Gateway tab.</li>
+            <li><strong>Arabic digit conversion:</strong> Arabic-Indic digits
+            (<code>٠١٢٣٤٥٦٧٨٩</code>) are automatically converted to Western digits
+            (<code>0123456789</code>) before processing.</li>
         </ul>
         <div class="alert alert-warning">
             Make sure the user's phone number field in their Moodle profile is filled in correctly. Users without a phone number will be skipped (logged as "No phone number").
@@ -180,8 +188,10 @@ use local_kwtsms\template_manager;
     <div class="card-body">
         <h5>SMS not arriving</h5>
         <ul>
-            <li><strong>Check the Logs tab:</strong> Look for the message status. If it shows "Failed" or "Skipped", the reason column will explain why.</li>
-            <li><strong>Test Mode enabled:</strong> When test mode is on, messages are sent to the API but not delivered to handsets. Disable test mode in Settings for production use.</li>
+            <li><strong>Check the Logs tab:</strong> Look for the message status.
+            If it shows "Failed" or "Skipped", the reason column will explain why.</li>
+            <li><strong>Test Mode enabled:</strong> When test mode is on, messages are sent to
+            the API but not delivered to handsets. Disable test mode in Settings for production use.</li>
             <li><strong>Check the kwtSMS queue:</strong> Log in to your kwtSMS account and check the message archive/queue for delivery status.</li>
             <li><strong>Gateway disabled:</strong> Verify that the gateway is enabled in the Settings tab.</li>
         </ul>

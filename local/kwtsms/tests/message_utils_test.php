@@ -24,8 +24,6 @@
 
 namespace local_kwtsms;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Tests for {@see message_utils}.
  *

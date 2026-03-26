@@ -59,10 +59,10 @@ $recipientlabels = [
                 $maxdisplay = 80;
                 $messageen = $template->message_en;
                 $messagear = $template->message_ar;
-                $messageen_short = (mb_strlen($messageen) > $maxdisplay)
+                $messageenShort = (mb_strlen($messageen) > $maxdisplay)
                     ? mb_substr($messageen, 0, $maxdisplay) . '...'
                     : $messageen;
-                $messagear_short = (mb_strlen($messagear) > $maxdisplay)
+                $messagearShort = (mb_strlen($messagear) > $maxdisplay)
                     ? mb_substr($messagear, 0, $maxdisplay) . '...'
                     : $messagear;
             ?>
@@ -76,10 +76,10 @@ $recipientlabels = [
                     <span class="badge badge-secondary"><?php echo $recipientlabel; ?></span>
                 </td>
                 <td class="kwtsms-msg-en-display">
-                    <?php echo s($messageen_short); ?>
+                    <?php echo s($messageenShort); ?>
                 </td>
                 <td class="kwtsms-msg-ar-display" dir="rtl">
-                    <?php echo s($messagear_short); ?>
+                    <?php echo s($messagearShort); ?>
                 </td>
                 <td>
                     <?php foreach ($placeholders as $ph) : ?>
