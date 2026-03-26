@@ -84,8 +84,8 @@ fputcsv($out, [
     'Error Code',
 ]);
 
-$records = $DB->get_records_select('local_kwtsms_log', $where, $params, 'timecreated DESC');
-foreach ($records as $record) {
+$rs = $DB->get_recordset_select('local_kwtsms_log', $where, $params, 'timecreated DESC');
+foreach ($rs as $record) {
     fputcsv($out, [
         userdate($record->timecreated),
         $record->recipient_phone,
@@ -98,6 +98,7 @@ foreach ($records as $record) {
         $record->error_code ?? '',
     ]);
 }
+$rs->close();
 
 fclose($out);
 exit;

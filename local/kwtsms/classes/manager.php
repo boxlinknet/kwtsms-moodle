@@ -196,7 +196,7 @@ class manager {
         $cleanedmessage = message_utils::clean($message);
         if ($cleanedmessage === '') {
             foreach ($normalized as $phone) {
-                self::log_skip($userid, $phone, $eventtype, 'empty_message_after_cleaning', $templateid);
+                self::log_skip($userid, $phone, $eventtype, 'empty_message', $templateid);
             }
             return;
         }

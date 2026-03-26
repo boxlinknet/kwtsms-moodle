@@ -94,7 +94,7 @@ class sync_gateway_data extends \core\task\scheduled_task {
                 return;
             }
 
-            $sitename = get_config('core', 'shortname');
+            $sitename = format_string(get_site()->shortname);
             $message = "Low SMS balance alert: {$balance} credits remaining (threshold: {$threshold}). - {$sitename}";
 
             manager::send($phones, $message, 'low_balance_alert', 0, 0);

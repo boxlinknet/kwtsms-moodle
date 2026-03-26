@@ -142,25 +142,20 @@ class api_client {
         // Reset cached client so it picks up new credentials.
         self::reset_client();
 
-        // Cache the balance response. We call the API again through the proper client
-        // to get the full response for caching.
+        // Cache the balance from the verify call (avoids a redundant API call).
+        $cachedata = [
+            'balance' => $balance,
+            'purchased' => $tempclient->purchased(),
+            'timestamp' => time(),
+        ];
+        self::set_cache('balance', json_encode($cachedata));
+
+        // Fetch and cache sender IDs and coverage (these need separate API calls).
         $client = self::get_client();
-        if ($client === null) {
-            return [
-                'success' => false,
-                'balance' => null,
-                'error' => 'Failed to create client after saving credentials.',
-            ];
+        if ($client !== null) {
+            self::fetch_and_cache_senderids($client);
+            self::fetch_and_cache_coverage($client);
         }
-
-        // Fetch and cache balance.
-        $balancedata = self::fetch_and_cache_balance($client);
-
-        // Fetch and cache sender IDs.
-        self::fetch_and_cache_senderids($client);
-
-        // Fetch and cache coverage.
-        self::fetch_and_cache_coverage($client);
 
         return [
             'success' => true,
@@ -210,18 +205,15 @@ class api_client {
             ];
         }
 
-        // Fetch and cache balance.
-        [$ok, $balance, $error] = $client->verify();
-        if (!$ok) {
+        // Fetch and cache balance (also verifies credentials).
+        $balance = self::fetch_and_cache_balance($client);
+        if ($balance === 0 && self::get_cache('balance') === null) {
             return [
                 'success' => false,
                 'balance' => null,
-                'error' => $error,
+                'error' => 'Failed to verify credentials.',
             ];
         }
-
-        // Cache the full balance data.
-        self::fetch_and_cache_balance($client);
 
         // Fetch and cache sender IDs.
         self::fetch_and_cache_senderids($client);
@@ -276,7 +268,17 @@ class api_client {
             $record->cache_key = $key;
             $record->cache_value = $value;
             $record->timemodified = time();
-            $DB->insert_record('local_kwtsms_cache', $record);
+            try {
+                $DB->insert_record('local_kwtsms_cache', $record);
+            } catch (\dml_write_exception $e) {
+                // Race condition: another process inserted first. Update instead.
+                $existing = $DB->get_record('local_kwtsms_cache', ['cache_key' => $key]);
+                if ($existing) {
+                    $existing->cache_value = $value;
+                    $existing->timemodified = time();
+                    $DB->update_record('local_kwtsms_cache', $existing);
+                }
+            }
         }
     }
 

@@ -31,7 +31,7 @@ require_capability('local/kwtsms:manage', context_system::instance());
 header('Content-Type: application/json; charset=utf-8');
 
 $username = required_param('username', PARAM_TEXT);
-$password = required_param('password', PARAM_TEXT);
+$password = required_param('password', PARAM_RAW);
 
 $result = \local_kwtsms\api_client::login($username, $password);
 

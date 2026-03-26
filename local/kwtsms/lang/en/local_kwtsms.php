@@ -132,6 +132,7 @@ $string['event_assessable_uploaded'] = 'Assignment Submitted';
 $string['event_assessable_uploaded_desc'] = 'Send SMS when an assignment file is submitted.';
 $string['event_user_created'] = 'New User Registered';
 $string['event_user_created_desc'] = 'Send SMS to admin when a new user registers.';
+$string['event_low_balance_alert'] = 'Low Balance Alert';
 $string['settings_saved'] = 'Settings saved successfully.';
 
 // Logs.

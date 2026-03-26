@@ -33,9 +33,8 @@ define(['jquery'], function($) {
      */
     function showFeedback(message, type) {
         var alertClass = 'alert alert-' + type;
-        $('#kwtsms-logs-feedback').html(
-            '<div class="' + alertClass + '" role="alert">' + message + '</div>'
-        );
+        var $alert = $('<div>').addClass(alertClass).attr('role', 'alert').text(message);
+        $('#kwtsms-logs-feedback').empty().append($alert);
     }
 
     /**

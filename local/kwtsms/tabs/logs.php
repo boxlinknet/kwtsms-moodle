@@ -151,6 +151,10 @@ $statusclasses = [
     </div>
 </form>
 
+<?php
+// Pre-load all template names to avoid N+1 queries in the loop.
+$templatenames = $DB->get_records_menu('local_kwtsms_templates', null, '', 'id, name');
+?>
 <?php if (empty($records)): ?>
     <div class="alert alert-info"><?php echo get_string('log_no_records', 'local_kwtsms'); ?></div>
 <?php else: ?>
@@ -180,13 +184,10 @@ $statusclasses = [
                         ? get_string('event_' . $record->event_type, 'local_kwtsms')
                         : s($record->event_type);
 
-                    // Look up template name.
+                    // Look up template name from pre-loaded map.
                     $templatename = '';
-                    if (!empty($record->template_id)) {
-                        $tpl = $DB->get_record('local_kwtsms_templates', ['id' => $record->template_id], 'name');
-                        if ($tpl) {
-                            $templatename = $tpl->name;
-                        }
+                    if (!empty($record->template_id) && isset($templatenames[$record->template_id])) {
+                        $templatename = $templatenames[$record->template_id];
                     }
 
                     $skipreason = '';

@@ -132,6 +132,7 @@ $string['event_assessable_uploaded'] = 'تقديم الواجب';
 $string['event_assessable_uploaded_desc'] = 'إرسال رسالة عند تقديم ملف الواجب.';
 $string['event_user_created'] = 'تسجيل مستخدم جديد';
 $string['event_user_created_desc'] = 'إرسال رسالة للمشرف عند تسجيل مستخدم جديد.';
+$string['event_low_balance_alert'] = 'تنبيه انخفاض الرصيد';
 $string['settings_saved'] = 'تم حفظ الإعدادات بنجاح.';
 
 // Logs.
