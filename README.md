@@ -80,7 +80,7 @@ Send SMS notifications to students and administrators via the kwtSMS gateway (kw
 - Arabic and English message support
 - REST/JSON API with client libraries for PHP, Python, JavaScript, and more
 
-**[Sign up for a kwtSMS account](https://www.kwtsms.com/signup.html)** to get your API credentials and start sending SMS from your Moodle site.
+**[Sign up for a kwtSMS account](https://www.kwtsms.com/account/signup/)** to get your API credentials and start sending SMS from your Moodle site.
 
 For more integrations, visit the [kwtSMS Integrations page](https://www.kwtsms.com/integrations.html).
 
