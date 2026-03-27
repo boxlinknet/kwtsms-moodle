@@ -70,6 +70,20 @@ Send SMS notifications to students and administrators via the kwtSMS gateway (kw
 - **Transactional:** Required for OTP and alerts, bypasses DND filtering
 - **Promotional:** For announcements and marketing, subject to DND filtering
 
+## About kwtSMS
+
+[kwtSMS](https://www.kwtsms.com) is a Kuwait-based SMS gateway providing reliable message delivery across the Middle East and internationally. Features include:
+
+- SMS delivery to 200+ countries
+- Transactional and promotional sender IDs
+- Real-time balance and delivery tracking
+- Arabic and English message support
+- REST/JSON API with client libraries for PHP, Python, JavaScript, and more
+
+**[Sign up for a kwtSMS account](https://www.kwtsms.com/signup.html)** to get your API credentials and start sending SMS from your Moodle site.
+
+For more integrations, visit the [kwtSMS Integrations page](https://www.kwtsms.com/integrations.html).
+
 ## Support
 
 - kwtSMS account support: https://www.kwtsms.com/support.html
